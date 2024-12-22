@@ -16,6 +16,7 @@ import {
   Play,
   Loader,
   Download,
+   Link,
   Image as ImageIcon
 } from "lucide-react";
 
@@ -40,6 +41,7 @@ const TranslationChat = () => {
   const [error, setError] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [voices, setVoices] = useState([]);
+  
 
   const chatContainerRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -654,6 +656,9 @@ const ALLOWED_DOC_TYPES = ['.txt', '.pdf', '.docx'];
   const navigateToLink = () => {
     window.location.href = 'https://voice-translate-1.onrender.com/';
   };
+  const navigateToLinks = () => {
+    window.location.href = 'https://translate-web-jade.vercel.app/';
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -795,7 +800,15 @@ const ALLOWED_DOC_TYPES = ['.txt', '.pdf', '.docx'];
               <Video className="w-6 h-6 text-blue-500 hover:text-blue-600" />
             </div>
       
-              
+              <div>
+              {/* Clickable icon */}
+              <Link
+                size={24} // Adjust the icon size
+                strokeWidth={2} // Adjust stroke width
+                onClick={navigateToLinks} // Handle navigation
+                style={{ cursor: 'pointer', color:"#6CB4EE" }} // Optional styles
+                />
+                </div>
               <button 
                 onClick={handleSend} 
                 disabled={isTranslating} 
@@ -824,6 +837,7 @@ const ALLOWED_DOC_TYPES = ['.txt', '.pdf', '.docx'];
                   <X className="w-5 h-5" />
                 </button>
               </div>
+              
               
               <div
                 className={`border-2 border-dashed rounded-lg p-8 text-center ${
@@ -867,6 +881,7 @@ const ALLOWED_DOC_TYPES = ['.txt', '.pdf', '.docx'];
                   <X className="w-5 h-5" />
                 </button>
               </div>
+               
               
               <div className="space-y-4">
                 <input
